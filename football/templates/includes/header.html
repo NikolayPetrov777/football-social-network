@@ -1,0 +1,24 @@
+{% load static %}
+<nav class="navbar navbar-light" style="background-color: green">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'posts:index' %}">
+      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      <span class="text-dark">
+        <h3>Новости футбола</h3>
+    </a>
+    <a class="nav nav-pills">
+      <div class="nav-item"> 
+        <a class="nav-link"
+          href="">Об авторе</a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link"
+          href="">Технологии</a>
+      </div>
+      <div class="nav-item"> 
+        <a class="nav-link"
+          href="">Новая запись</a>
+      </div>
+    </a>
+  </div>
+</nav>
