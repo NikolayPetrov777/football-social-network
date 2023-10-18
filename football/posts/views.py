@@ -22,3 +22,12 @@ def post_detail(request, pk):
     context = {'post': post,
                'news': news}
     return render(request, template, context)
+
+def new_detail(request, pk):    
+    template = 'posts/new_detail.html'
+#    post = get_object_or_404(Post, pk=pk)
+    news = New.objects.order_by('-pub_date')[:10]
+    new = New.objects.get(pk=pk)
+    context = {'new': new,
+               'news': news}
+    return render(request, template, context)

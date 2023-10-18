@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Новость: {{ new.title }} {% endblock %}
 {% block content %}
 <div class="container">
 <div class="row">
@@ -18,19 +19,22 @@
     </ul>
   </div>
   <div class="col-8" style="background: white;">
-    <h4><i>Статьи обозревателей</i></h4>
+    <h4>{{ new.title }}</h4>
     <br>
-    {% for post in posts %}
-    <p>{{ post.text|truncatechars:700 }} <a style="color: black" href="{% url 'posts:post_detail' post.pk %}"><i>подробнее</i></a> <br>Автор: {{ post.author.username }} <br> {{ post.pub_date|date:"j.m.Y" }}<br></p>
-    {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
+    <p>{{ new.text }}
+      <a class="nav nav-pills">
+        <div class="nav-item"> 
+          <a style="position: relative; top: -20px; right: -720px;" class="btn btn-success" href="{% url 'posts:index' %}"><i>вернуться</i></a>
+        </div>
+      </a> 
+    <br> {{ new.pub_date|date:"j.m.Y h:m:s" }}<br></p>
   </div>
   <div class="col-2" style="background: #D3D3D3;">
     <h4><i>Новости</i></h4>
       <br>
       {% for new in news %}
         <p> 
-          <a style="color: black" href="{% url 'posts:new_detail' new.pk %}">{{ new.title }}</a> <br> {{ new.pub_date|date:"j.m.Y h:m:s" }}
+          <a style="color: black" href="">{{ new.title }}</a> <br> {{ new.pub_date|date:"j.m.Y h:m:s" }}
         </p>
       {% endfor %}
   </div>
