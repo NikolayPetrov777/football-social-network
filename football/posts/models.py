@@ -18,6 +18,9 @@ class Post(models.Model):
     group = models.ForeignKey(Group, on_delete=models.SET_NULL,
                               blank=True, null=True)
     
+    def __str__(self):
+        return self.text[:15]
+    
 
 class New(models.Model):
     title = models.CharField(max_length=90)
