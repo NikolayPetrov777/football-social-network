@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container">
 <div class="row">
-  <div class="col-2" style="background: grey;">
+  <div class="col-2" style="background: #D3D3D3;">
     <h4><i>Турниры</i></h4>
     <br>
     <ul>
@@ -17,19 +17,21 @@
       </li>
     </ul>
   </div>
-  <div class="col-8" style="background: grey;">
+  <div class="col-8" style="background: white;">
     <h4><i>Статьи обозревателей</i></h4>
-      <br>
+    <br>
     {% for post in posts %}
-    <p>{{ post.text }} <br>Автор: {{ post.author.username }} <br> {{ post.pub_date|date:"j.m.Y" }}<br></p>
+    <p>{{ post.text|truncatechars:700 }} <a style="color: black" href=""><i>подробнее</i></a> <br>Автор: {{ post.author.username }} <br> {{ post.pub_date|date:"j.m.Y" }}<br></p>
     {% if not forloop.last %}<hr>{% endif %}
     {% endfor %}
   </div>
-  <div class="col-2" style="background: grey;">
+  <div class="col-2" style="background: #D3D3D3;">
     <h4><i>Новости</i></h4>
       <br>
       {% for new in news %}
-        <p> <a href="">{{ new.title }}</a> <br> {{ new.pub_date|date:"j.m.Y h:m:s" }}</p>
+        <p> 
+          <a style="color: black" href="">{{ new.title }}</a> <br> {{ new.pub_date|date:"j.m.Y h:m:s" }}
+        </p>
       {% endfor %}
   </div>
 </div>

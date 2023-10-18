@@ -1,23 +1,26 @@
 {% load static %}
-<nav class="navbar navbar-light" style="background-color: green">
+<nav class="navbar navbar-light" style="background-color: #006400">
   <div class="container">
     <a class="navbar-brand" href="{% url 'posts:index' %}">
-      <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
-      <span class="text-dark">
-        <h3>Новости футбола</h3>
+      <img src="{% static 'img/logo.png' %}" width="175" height="75" class="d-inline-block align-top" alt="">
+      <div style="color: #ffffff">
+        <span style="font-family: Comic Sans MS, Comic Sans, cursive;">
+          <h3>Новости футбола</h3>
+        </span>
+      </div>
     </a>
     <a class="nav nav-pills">
       <div class="nav-item"> 
-        <a class="nav-link"
+        <a class="btn btn-success" style="font-family: Comic Sans MS, Comic Sans, cursive;"
           href="">Об авторе</a>
       </div>
       <div class="nav-item">
-        <a class="nav-link"
+        <a class="btn btn-success" style="font-family: Comic Sans MS, Comic Sans, cursive;"
           href="">Технологии</a>
       </div>
       <div class="nav-item"> 
-        <a class="nav-link"
-          href="">Новая запись</a>
+        <a class="btn btn-success" style="font-family: Comic Sans MS, Comic Sans, cursive;"
+          href="">Регистрация</a>
       </div>
     </a>
   </div>
