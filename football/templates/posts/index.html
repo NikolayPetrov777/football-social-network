@@ -3,11 +3,11 @@
 <div class="container">
 <div class="row">
   <div class="col-2" style="background: #D3D3D3;">
-    <h4><i>Турниры</i></h4>
+    <h4 class="border-top text-center py-3"><i>Турниры</i></h4>
     <br>
     <ul>
       <li>
-        <i>РПЛ</i>
+        <i>ЕВРО 2024</i>
       </li>
       <li>
         <i>Лига чемпионов</i>
@@ -18,15 +18,20 @@
     </ul>
   </div>
   <div class="col-8" style="background: white;">
-    <h4><i>Статьи обозревателей</i></h4>
+    <h4 class="border-top text-center py-3"><i>Статьи обозревателей</i></h4>
     <br>
     {% for post in posts %}
     <p>{{ post.text|truncatechars:700 }} <a style="color: black" href="{% url 'posts:post_detail' post.pk %}"><i>подробнее</i></a> <br>Автор: {{ post.author.username }} <br> {{ post.pub_date|date:"j.m.Y" }}<br></p>
-    {% if not forloop.last %}<hr>{% endif %}
+      {% if post.tournament %}
+        <a style="color: green" href="{% url 'posts:tournament_list' post.tournament.slug %}">все статьи про {{ post.tournament.title }}</a>
+        {% if not forloop.last %}<hr>{% endif %}
+      {% else %}
+        <hr>
+      {% endif %}
     {% endfor %}
   </div>
   <div class="col-2" style="background: #D3D3D3;">
-    <h4><i>Новости</i></h4>
+    <h4 class="border-top text-center py-3"><i>Новости</i></h4>
       <br>
       {% for new in news %}
         <p> 

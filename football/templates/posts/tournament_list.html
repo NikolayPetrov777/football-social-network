@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Статья: {{ post.text|truncatechars:30 }} {% endblock %}
+{% block title %}Турнир: {{ tournament.title }} {% endblock %}
 {% block content %}
 <div class="container">
 <div class="row">
@@ -19,10 +19,13 @@
     </ul>
   </div>
   <div class="col-8" style="background: white;">
-    <h4 class="border-top text-center py-3"><i>Текущая статья</i></h4>
+    <h4 class="border-top text-center py-3"><i>Турнир: {{ tournament.title }}</i></h4>
     <br>
-    <p>{{ post.text }} <br>
+    {% for post in posts %}
+      <p>{{ post.text|truncatechars:700 }} <a style="color: black" href="{% url 'posts:post_detail' post.pk %}"><i>подробнее</i></a> <br>
     <br>Автор: {{ post.author.username }} <br> {{ post.pub_date|date:"j.m.Y" }}<br></p>
+    {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
   </div>
   <div class="col-2" style="background: #D3D3D3;">
     <h4 class="border-top text-center py-3"><i>Новости</i></h4>
